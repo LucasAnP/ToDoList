@@ -68,3 +68,73 @@ export const InputButton = styled.TouchableOpacity`
 `;
 
 export const PlusIconComponent = styled(PlusIcon)``;
+
+export const BodyContainer = styled.View`
+  flex: 1;
+
+  margin-top: 55px;
+
+  padding: 0 24px;
+
+  align-items: center;
+`;
+
+export const TasksStatusContainer = styled.View`
+  width: 100%;
+  height: 40px;
+
+  flex-direction: row;
+
+  justify-content: space-between;
+
+  border-bottom-width: 1px;
+  border-bottom-color: ${({ theme }) => theme.colors.base.gray[300]};
+`;
+
+export const CreatedText = styled.Text`
+  color: ${({ theme }) => theme.colors.product.blue};
+
+  font-family: "Inter-Bold";
+  font-size: 14px;
+
+  margin-right: 8px;
+`;
+
+export const ConcludedText = styled.Text`
+  color: ${({ theme }) => theme.colors.product.purple};
+
+  font-family: "Inter-Bold";
+  font-size: 14px;
+
+  margin-right: 8px;
+`;
+
+export const AgroupContainer = styled.View`
+  flex-direction: row;
+`;
+
+export const ViewIcon = styled.View`
+  background-color: ${({ theme }) => theme.colors.base.gray[400]};
+
+  width: 25px;
+  height: 19px;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 999px;
+`;
+
+export const ViewIconText = styled.Text`
+  color: ${({ theme }) => theme.colors.base.gray[200]};
+
+  font-family: "Inter-Bold";
+  font-size: 12px;
+`;
+
+export const EmptyContainer = styled.Text`
+  color: ${({ theme }) => theme.colors.base.gray[200]};
+
+  font-family: "Inter-Bold";
+  font-size: 12px;
+`;
