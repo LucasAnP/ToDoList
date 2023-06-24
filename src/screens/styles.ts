@@ -1,6 +1,7 @@
 import { styled } from "styled-components/native";
 import TodoLogo from "../assets/images/Logo.svg";
 import PlusIcon from "../assets/icons/Plus.svg";
+import ClipBoardIcon from "../assets/icons/Clipboard.svg";
 
 interface ContainerProps {
   insetsTop: number;
@@ -132,9 +133,24 @@ export const ViewIconText = styled.Text`
   font-size: 12px;
 `;
 
-export const EmptyContainer = styled.Text`
-  color: ${({ theme }) => theme.colors.base.gray[200]};
+export const EmptyContainer = styled.View`
+  align-items: center;
+`;
+
+export const ClipboardIcon = styled(ClipBoardIcon)`
+  margin-top: 48px;
+  margin-bottom: 16px;
+`;
+
+export const EmptyTextBold = styled.Text`
+  color: ${({ theme }) => theme.colors.base.gray[300]};
 
   font-family: "Inter-Bold";
-  font-size: 12px;
+  font-size: 14px;
+`;
+export const EmptyText = styled.Text`
+  color: ${({ theme }) => theme.colors.base.gray[300]};
+
+  font-family: "Inter-Regular";
+  font-size: 14px;
 `;

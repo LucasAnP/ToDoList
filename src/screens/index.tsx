@@ -1,9 +1,13 @@
 import {
   AgroupContainer,
   BodyContainer,
+  ClipboardIcon,
   ConcludedText,
   Container,
   CreatedText,
+  EmptyContainer,
+  EmptyText,
+  EmptyTextBold,
   Header,
   Input,
   InputButton,
@@ -59,6 +63,11 @@ export const Home = () => {
             </ViewIcon>
           </AgroupContainer>
         </TasksStatusContainer>
+        <EmptyContainer>
+          <ClipboardIcon />
+          <EmptyTextBold>Você ainda não tem tarefas cadastradas</EmptyTextBold>
+          <EmptyText>Crie tarefas e organize seus itens a fazer</EmptyText>
+        </EmptyContainer>
       </BodyContainer>
     </Container>
   );
