@@ -1,20 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { useFonts } from "expo-font";
+import { Home } from "./src/screens";
+import { useCallback } from "react";
+import * as SplashScreen from "expo-splash-screen";
+import { StatusBar, View } from "react-native";
+import { ThemeProvider } from "styled-components/native";
+import Theme from "./src/theme/theme";
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    "Inter-Bold": require("./src/assets/fonts/Inter-Bold.ttf"),
+    "Inter-Regular": require("./src/assets/fonts/Inter-Regular.ttf"),
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider onLayout={onLayoutRootView}>
+      <ThemeProvider theme={Theme}>
+        <Home />
+      </ThemeProvider>
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
