@@ -3,7 +3,6 @@ import { useFonts } from "expo-font";
 import { Home } from "./src/screens";
 import { useCallback } from "react";
 import * as SplashScreen from "expo-splash-screen";
-import { StatusBar, View } from "react-native";
 import { ThemeProvider } from "styled-components/native";
 import Theme from "./src/theme/theme";
 
