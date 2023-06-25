@@ -66,15 +66,15 @@ export const Home = () => {
       );
     }
   };
-
   const handleAddTask = () => {
     if (input) {
       setCreatedTasks([
+        ...createdTasks,
         {
           value: input,
         },
-        ...createdTasks,
       ]);
+      setInput("");
     }
   };
 
@@ -115,9 +115,7 @@ export const Home = () => {
         </TasksStatusContainer>
         <ListContainer
           data={[...createdTasks, ...concludedTasks]}
-          keyExtractor={(index: any, item: any) =>
-            index.toString().concat(item?.value)
-          }
+          keyExtractor={(_, index: any) => index.toString()}
           showsVerticalScrollIndicator={false}
           renderItem={({ item, index }: any) => (
             <TaskContainer>
