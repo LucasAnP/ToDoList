@@ -36,26 +36,19 @@ interface RenderProps {
   };
   index?: number | any;
 }
+type ArrayType = { value: string }[];
 
 export const Home = () => {
   const insets = useSafeAreaInsets();
   const theme = useTheme();
   const [input, setInput] = useState("");
 
-  const [createdTasks, setCreatedTasks] = useState([
-    { value: "Teste created" },
-    { value: "Teste created 2" },
-    { value: "Teste created 3" },
-  ]);
-  const [concludedTasks, setConcludedTasks] = useState([
-    { value: "Teste created" },
-    { value: "Teste created 2" },
-    { value: "Teste created 3" },
-  ]);
+  const [createdTasks, setCreatedTasks] = useState<ArrayType>([]);
+  const [concludedTasks, setConcludedTasks] = useState<ArrayType>([]);
 
   const handleConcludeTask = ({ item }: RenderProps) => {
     setCreatedTasks(
-      createdTasks.filter((taskValue) => taskValue.value !== item?.value)
+      createdTasks.filter((taskValue) => taskValue?.value !== item?.value)
     );
     setConcludedTasks((prevState) => [...prevState, item]);
     setInput("");
@@ -122,7 +115,9 @@ export const Home = () => {
         </TasksStatusContainer>
         <ListContainer
           data={[...createdTasks, ...concludedTasks]}
-          keyExtractor={(index: any) => index.toString()}
+          keyExtractor={(index: any, item: any) =>
+            index.toString().concat(item?.value)
+          }
           showsVerticalScrollIndicator={false}
           renderItem={({ item, index }: any) => (
             <TaskContainer>
