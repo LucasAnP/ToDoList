@@ -28,6 +28,14 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import { useTheme } from "styled-components/native";
 import { useState } from "react";
+import { ActivityIndicator } from "react-native";
+
+interface RenderProps {
+  item: {
+    value: string;
+  };
+  index?: number | any;
+}
 
 export const Home = () => {
   const insets = useSafeAreaInsets();
@@ -45,7 +53,7 @@ export const Home = () => {
     { value: "Teste created 3" },
   ]);
 
-  const handleConcludeTask = (item, index) => {
+  const handleConcludeTask = ({ item }: RenderProps) => {
     setCreatedTasks(
       createdTasks.filter((taskValue) => taskValue.value !== item?.value)
     );
@@ -53,7 +61,7 @@ export const Home = () => {
     setInput("");
   };
 
-  const handleDeleteTask = (item, index) => {
+  const handleDeleteTask = ({ item, index }: RenderProps) => {
     const createdTasksLenght = createdTasks.length;
     if (createdTasksLenght > index) {
       setCreatedTasks(
@@ -114,12 +122,16 @@ export const Home = () => {
         </TasksStatusContainer>
         <ListContainer
           data={[...createdTasks, ...concludedTasks]}
-          renderItem={({ item, index }) => (
+          keyExtractor={(index: any) => index.toString()}
+          showsVerticalScrollIndicator={false}
+          renderItem={({ item, index }: any) => (
             <TaskContainer>
               {index >= createdTasks.length ? (
                 <ConcludedIcon />
               ) : (
-                <CreatedIcon onPress={() => handleConcludeTask(item, index)} />
+                <CreatedIcon
+                  onPress={() => handleConcludeTask({ item, index })}
+                />
               )}
               <TasksText
                 numberOfLines={2}
@@ -127,7 +139,7 @@ export const Home = () => {
               >
                 {item?.value}
               </TasksText>
-              <TrashIcon onPress={() => handleDeleteTask(item, index)} />
+              <TrashIcon onPress={() => handleDeleteTask({ item, index })} />
             </TaskContainer>
           )}
           ListEmptyComponent={() => (
