@@ -138,10 +138,8 @@ export const Home = () => {
           ListEmptyComponent={() => (
             <EmptyContainer>
               <ClipboardIcon />
-              <EmptyTextBold>
-                Você ainda não tem tarefas cadastradas
-              </EmptyTextBold>
-              <EmptyText>Crie tarefas e organize seus itens a fazer</EmptyText>
+              <EmptyTextBold>You don't have tasks registered yet</EmptyTextBold>
+              <EmptyText>Create tasks and organize your to-do items</EmptyText>
             </EmptyContainer>
           )}
         />
